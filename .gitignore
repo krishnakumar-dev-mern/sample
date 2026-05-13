@@ -1,7 +1,10 @@
 # Logs
 logs
+<<<<<<< HEAD
 .env
 dist
+=======
+>>>>>>> 8884ab1b4199ab0226f15fe6d2bcffa5b1df67fb
 *.log
 npm-debug.log*
 yarn-debug.log*
