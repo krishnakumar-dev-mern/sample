@@ -21,8 +21,16 @@ router.post("/register", async (req, res) => {
     otpExpires: new Date(Date.now() + 10 * 60 * 1000)
   });
 
-  await sendEmail(email, "Your OTP", `Your OTP is: ${otp}`);
-  res.json({ message: "OTP sent" });
+  // await sendEmail(email, "Your OTP", `Your OTP is: ${otp}`);
+  // res.json({ message: "OTP sent" });
+  try {
+  await sendEmail(email, otp);
+} catch (error) {
+  console.error("Email sending failed:", error);
+  return res.status(500).json({
+    message: "Failed to send OTP email",
+  });
+}
 });
 
 router.post("/verify-otp", async (req, res) => {
